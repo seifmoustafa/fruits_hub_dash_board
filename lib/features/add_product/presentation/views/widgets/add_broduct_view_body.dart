@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dash_board/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub_dash_board/features/add_product/presentation/views/widgets/image_field.dart';
 
 class AddBroductViewBody extends StatefulWidget {
   const AddBroductViewBody({super.key});
@@ -39,6 +40,7 @@ class _AddBroductViewBodyState extends State<AddBroductViewBody> {
               hintText: 'Product Description',
               textInputType: TextInputType.text,
             ),
+            ImageField(),
           ],
         ),
       ),
