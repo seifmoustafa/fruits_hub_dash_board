@@ -2,7 +2,7 @@ import 'dart:io';
 
 class AddProductInputEntity {
   final String name;
-  final double price;
+  final num price;
   final String code;
   final bool isFeatured;
   final String description;
@@ -16,5 +16,5 @@ class AddProductInputEntity {
       required this.isFeatured,
       required this.description,
       required this.fileImage,
-      required this.imageUrl});
+      this.imageUrl});
 }

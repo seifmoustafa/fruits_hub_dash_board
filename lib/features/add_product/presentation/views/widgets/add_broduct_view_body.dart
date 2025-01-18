@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub_dash_board/core/widgets/custom_button.dart';
 import 'package:fruits_hub_dash_board/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub_dash_board/core/helper_functions/custom_top_snack_bar.dart';
+import 'package:fruits_hub_dash_board/features/add_product/domain/entity/add_product_input_entity.dart';
 import 'package:fruits_hub_dash_board/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:fruits_hub_dash_board/features/add_product/presentation/views/widgets/is_featured_check_box.dart';
 
@@ -17,7 +18,7 @@ class _AddBroductViewBodyState extends State<AddBroductViewBody> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   var _autoValidate = AutovalidateMode.disabled;
-  late String name, code, discription;
+  late String name, code, description;
   late num price;
   File? image;
   late bool isFeatured;
@@ -55,7 +56,7 @@ class _AddBroductViewBodyState extends State<AddBroductViewBody> {
               ),
               CustomTextFormField(
                 onSaved: (value) {
-                  discription = value!;
+                  description = value!;
                 },
                 maxLines: 5,
                 hintText: 'Product Description',
@@ -77,6 +78,14 @@ class _AddBroductViewBodyState extends State<AddBroductViewBody> {
                     if (image != null) {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+                        AddProductInputEntity input = AddProductInputEntity(
+                          name: name,
+                          code: code,
+                          description: description,
+                          price: price,
+                          fileImage: image!,
+                          isFeatured: isFeatured,
+                        );
                         customSuccessTopSnackBar(
                             context: context,
                             message: "Product added successfully");
